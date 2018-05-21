@@ -8,14 +8,16 @@ class Turquoise extends React.Component {
     constructor(state) {
         super(state);
         this.onAddedProduct = state.onAddedProduct;
+        this.product = state.product;
     }
+
     render() {
         return (
             <div>
-                <h1>Turquoise</h1>
-                <p>this is the turquoise page</p>
-                <button onClick={() => this.onAddedProduct({ name: 'Turquoise', price: 12 })}>
-                    ADD TO MUTHAFUCKING CART
+                <h1>{this.product.name}</h1>
+                <p>${parseFloat(this.product.price).toFixed(2)}</p>
+                <button onClick={() => this.onAddedProduct(this.product)}>
+                    add {this.product.name} to cart
                 </button>
             </div>
         )

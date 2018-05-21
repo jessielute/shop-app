@@ -6,10 +6,17 @@ import App from './App';
 import Turquoise from './Turquoise';
 import Blush from './Blush';
 import Cart from './Cart'
-import { Products } from './Products';
+import { fetchProductsList } from './Products';
 
 class Shop extends React.Component {
-
+    constructor(e) {
+      super(e);
+      this.state = {
+        cart: [],
+        productsList: []
+      };
+    }
+ 
     createProduct({ name, price }) {
         return { name, price };
     }
@@ -18,11 +25,22 @@ class Shop extends React.Component {
         if (!name || name === '' ) {
             throw new Error('I can\'t do that dave');
         }
-        const cartState = (this.state || {}).cart || [];
-  
-        const newState = cartState.concat([{ name, price}])
-        this.setState({ cart: newState });
-        this.forceUpdate();
+
+        this.setState(prevState => {
+          return ({
+            cart: [...prevState.cart, {name, price}],
+            productsList: prevState.productsList
+          })
+        }
+      );
+    }
+
+    componentDidMount() {
+      fetchProductsList().then((productsList) => {
+        this.setState(prevState => {
+          return Object.assign(prevState, {productsList});
+        });
+      })
     }
 
     // state = {
@@ -34,25 +52,30 @@ class Shop extends React.Component {
     // 3. MAP over array of product details in each details component
     // 4. Details show up on page! Woop. 
     
-    // onAddElement() {
+    renderProductRoutes(onAddedProduct) {
+      return this.state.productsList.map((product) => 
+        (<Route exact path={`${this.props.match.path}/${product.id}`} render={ (props) => (<Turquoise key={product.id} onAddedProduct={onAddedProduct} product={product} />) } />)
+      );
+    }
 
-    //     this.setState()
-    // }
-    
+    renderProductLinks() {
+      return this.state.productsList.map((product) =>
+        (<Link to={`${this.props.match.path}/${product.id}`}><button>{product.name}</button></Link>)
+      )
+    }
 
     render() {
-        debugger;
+        const boundCallback = this.addProductToCart.bind(this);
+
         return (
             <div>
                 <h1>Shop</h1>
-                <p>this is the shop page</p>
+                <p>This is the shop page.</p>
                 <div>
-                    <Link to={`${this.props.match.path}/blush`}><button>Blush</button></Link>
-                    <Link to={`${this.props.match.path}/turquoise`}><button>Turquoise</button></Link>
+                    {this.renderProductLinks()}
                 </div>
                 <Switch>
-                    <Route path={`${this.props.match.path}/blush`} render={ props => { addProductToCart: this.addProductToCart }} component={Blush} />
-                    <Route path={`${this.props.match.path}/turquoise`} render={ () => <Turquoise onAddedProduct={this.addProductToCart} /> }/> />
+                    {this.renderProductRoutes(boundCallback)}
                 </Switch>
                 <Cart items={(this.state || {}).cart || []} />
             </div>

@@ -57,7 +57,7 @@ class Shop extends React.Component {
     render() {
       return (
         <div>
-        <h1>Welome to the Blush and Turquoise Shop</h1>
+        <h1>Welcome to the Blush and Turquoise Shop</h1>
         <h2>Established 1659</h2>
         <div class= "transbox">
           

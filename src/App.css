@@ -1,14 +1,20 @@
 .transbox {
-  background-color: rgb(90, 224, 211);
+  background-color: #A8E6CF; 
   max-width: 50em;
-  margin: 3.35vw;
+  margin: 2vw;
   opacity: 0.7;
   border: 5em black;
 }
 
-h3 {
-  text-align: center;
- color: aqua;
+h2 {
+  text-align: right;
+  font-family: 'Pacifico', cursive;
+  font-size: 3vw;
+  color: #384046;
+  margin: 4px;
+  margin-right: 9em;
+  opacity: 0.7;
+
 }
 
 .App {
@@ -20,38 +26,43 @@ h3 {
 }
 
 button {
-  background-color: darkturquoise;
-  color: black;
+background-color:#A8E6CF; 
   display: inline-flex;
- 
-  padding: 7px 35px;
+  padding: 1vw;
   background: transparent;
   cursor: pointer;
 } 
 
 .MuiToolbar-root-36 {
-  background-color: lightcoral;
+  background-color: #A8E6CF;
+  border: 10px #384046;
 }
 
 body {
-  background-image: url("https://i.imgur.com/FrlHpAn.jpg"); 
+  background-image: url("https://i.imgur.com/xf28uG4.jpg"); 
   background-size: cover;
 
 }
 
 h1 {
-color: turquoise;
+color: #A8E6CF;
 background-color: lightcoral;
-border: 0.6em solid white;
+border: 0.32vw solid white;
 max-width: 20em;
 text-align: center;
-margin: 1.5em;
+margin: 0.5em;
+margin-top: 1.2em;
 padding: 3px;
+font-family: 'Pacifico', cursive;
+font-size: 4vw;
+opacity: 0.8;
 }
 
 p {
   padding: 3vw;
   margin: 4vw;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.7vw;
 }
 
 button {

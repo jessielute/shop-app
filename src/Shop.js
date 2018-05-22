@@ -29,15 +29,6 @@ class Shop extends React.Component {
         return Object.assign(prevState, {productsLists});
       });
     }
-
-    // state = {
-    //     cart: ,
-    // }
-    // ** ADDING PRODUCTS TO SHOP -- Part 1 return of the jedi **
-    // 1. Add array of objects containing product details to SHOP STATE
-    // 2. pass array of product detaisl down BLUSH and MINT
-    // 3. MAP over array of product details in each details component
-    // 4. Details show up on page! Woop. 
     
     renderProductRoutes(onAddedProduct) {
       return this.state.productsLists.map((productList) => {
@@ -50,7 +41,8 @@ class Shop extends React.Component {
 
     renderProductLinks() {
       return this.state.productsLists.map((productList) =>
-        (<Link key={productList.url} to={`${this.state.match.path}/${productList.url}`}><button>{productList.name}</button></Link>)
+        (<Link key={productList.url} to={`${this.state.match.path}/${productList.url}`}>
+        <button className = {productList.name + "btn"}>{productList.name}</button></Link>)
       )
     }
 
@@ -59,15 +51,17 @@ class Shop extends React.Component {
         <div>
         <h1>Welcome to the Blush and Turquoise Shop</h1>
         <h2>Established 1659</h2>
-        <div class= "transbox">
+        <div className="transbox">
           
-          <p>Peruse our boutique collection of blush and turquoise items. Languish in the beauty of blush and turqouise.
-            Stay a while. Why ony Blush and Turquoise? 
-            Because, they are the best colours. Anyone who says differently is incorrect and you can tell them tell
-             that we (clearly experts on this matter) have consulted scientific journals, primary sources (such as 
-             the IBECC (International Best Colours Ever Comittee) in order to prove our theory that hte only two colours that <i>truly </i> 
-               meet the standrards of IBECC are Blush, and Turquoise. 
-          </p>
+          <p><b>Peruse our boutique collection of Blush and Turquoise items. Languish in the beauty of Blush and Turqouise.
+            Stay a while. Why, I hear you asking, ony Blush and Turquoise?</b></p>
+            <p>Because, dear reader, they are the best colours. Anyone who says differently is incorrect and you can tell them tell
+             that we (clearly experts on this matter) said so. We have consulted scientific journals (The Metropolitian Review of all Colours That Ever Were or Will Be, et al)
+              primary sources (such as the IBECC (International Best Colours Ever Comittee) in order to prove our theory that the only two colours that <i>truly </i> 
+               meet the standards of IBECC are Blush, and Turquoise.</p>
+       
+          <p><b>Shall we dive into the serene lagoon of Blush and Turquoise? Together, dear reader, we will adorn your home, your body, and your soul,
+            with the scientifically proven Best Colours Ever.</b></p>
           <div>
             </div>
             {this.renderProductLinks()}
@@ -75,7 +69,9 @@ class Shop extends React.Component {
           <Switch>
             {this.renderProductRoutes(this.onAddedProduct)}
           </Switch>
+          <div className = "cartContainer">
           <Cart items={this.getCart()} />
+          </div>
         </div>
       )
     }

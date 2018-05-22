@@ -18,14 +18,14 @@ const ProductsList = [
       },
       {
           name: 'Wonderous Blush Water Bottle', 
-          id: '207f3b4d-bd5e-9888-b04b-60f5a0ef66f8',
+          id: '207f3b4d-bd5e-9888-b04b-67f5a0ef66f8',
           price: ' $25', 
           picture: './../public/imgs/shoe3.png', 
           type: 'water bottle'
       },
       {
         name: 'Hip Blush Vape', 
-        id: '207f3b4d-bd5e-9888-b04b-60f5a0ef66f8',
+        id: '207f3b4d-bd5e-9888-b04b-61f5a0ef66f8',
         price: ' $125', 
         picture: './../public/imgs/shoe3.png', 
         type: 'vape'
@@ -45,14 +45,14 @@ const ProductsList = [
       },
       {
           name: 'Snazzy Turquoise Water Bottle', 
-          id: '207f3b4d-bd5e-9888-b04b-60f5a0ef66f8',
+          id: '207f3b4d-bd5e-9888-b14b-60f5a0ef66f8',
           price: ' $15', 
           picture: './../public/imgs/shoe3.png', 
           type: 'shoe'
       },
       {
         name: 'On-Trend Turquoise Vape', 
-        id: '207f3b4d-bd5e-9888-b04b-60f5a0ef66f8',
+        id: '207f3b4d-bd5e-9888-b04b-60f5b0ef66f8',
         price: ' $125', 
         picture: './../public/imgs/shoe3.png', 
         type: 'vape'

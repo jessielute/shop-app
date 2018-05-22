@@ -1,0 +1,20 @@
+.cartContainer {
+    background-color: #FFAAA5;
+    opacity: 0.8;
+    text-align: right;
+    margin: 4vw;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.7vw;
+    line-height: 200%;
+    padding: 2em;
+    border: 1vw solid white;
+}
+
+h3 {
+    font-family: 'Pacifico', cursive;
+    text-align: center;
+    font-size: 5vw;
+    color: #A8E6CF; 
+    opacity: 10;
+}

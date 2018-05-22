@@ -5,6 +5,7 @@ import { Switch, Link, Route } from 'react-router-dom'
 import Nav from './Nav'
 import Home from './Home'
 import Shop from './Shop'
+import { fetchCart, addToCart } from './Api';
 
 class App extends React.Component {
   constructor(...args) {
@@ -15,15 +16,15 @@ class App extends React.Component {
   }
 
   async fetchCart() {
-    return Promise.resolve([]);
+    return fetchCart();
   }
 
   async componentWillMount() {
     const cart = await this.fetchCart();
-
+    debugger;
     this.setState(prevState => {
       return ({
-        cart: [...prevState, ...cart]
+        cart: [...prevState, ...cart.data]
       });
     });
   }
@@ -32,10 +33,12 @@ class App extends React.Component {
     return this.state.cart;
   }
 
-  addProductToCart({ id,  name, price }) {
+  async addProductToCart({ id,  name, price }) {
     if (!name || name === '' ) {
       throw new Error('I can\'t do that dave');
     }
+    
+    await addToCart({ id, name, price});
 
     this.setState(prevState => {
       return ({

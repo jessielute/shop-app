@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import './App.css';
+import './cart.css';
 import { Switch, Link, Route } from 'react-router-dom'
 
 
@@ -19,9 +19,9 @@ class Cart extends React.Component {
       if (!this.props.items || !Array.isArray(this.props.items) || this.props.items.length === 0) {
         return  (<div>you have not yet added any items.</div>);
       } else {
-        return (<ul>
+        return (<div><h3>Your Cart</h3><ul>
           {this.props.items.map(this.renderItem)}
-        </ul>);
+        </ul></div>);
       }
     }
 

@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import './App.css';
+import './Home.css';
 import {Switch, Link, Route} from 'react-router-dom';
 import App from './App';
 import HomeStyles from './Home.css';
@@ -9,6 +9,9 @@ import InputLabel from '@material-ui/core/InputLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 const USERNAME_LOCALSTORAGE_KEY = 'username:localstorage';
+
+
+
 
 function getUsernameFromLocalStorage() {
   if (window && window.localStorage) {
@@ -19,12 +22,13 @@ function getUsernameFromLocalStorage() {
 }
 
 function setUsernameFromLocalStorage(username) {
-  debugger;
+  //debugger;
   if (window && window.localStorage) {
     window.localStorage.setItem(USERNAME_LOCALSTORAGE_KEY, username);
   }
 }
 
+//gets stored user name from local storage
 class Home extends React.Component {
   constructor(args) {
     super(args);
@@ -43,7 +47,7 @@ class Home extends React.Component {
   render() {
     return (
       <div className="homeContainer">
-        {this.state.username ? <div className="welcomeMessage"><span>Hello {this.state.username}, welcome back.</span></div> : ''}
+        {this.state.username ? <div className="welcomeMessage"><span><h4>Hello {this.state.username}, welcome back.</h4></span></div> : ''}
         <FormControl>
           <InputLabel htmlFor="name-input">User Name</InputLabel>
           <Input id="name-simple" value={this.state.username} onChange={this.handleChange.bind(this)} />

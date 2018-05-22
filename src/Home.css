@@ -1,8 +1,31 @@
+.MuiInputLabel-root-93 MuiInputLabel-root-88 MuiInputLabel-formControl-89 MuiInputLabel-animated-92 MuiInputLabel-shrink-91 {
+  font-size: 6rem;
+}
+
 .homeContainer {
   flex: 0 0 100%;
-  margin: 10px;
+  margin: 3em;
+  opacity: 0.8;
+  background-color: #FF8B94;
+  text-align: center;
+  border: 1vw solid white;
 }
 
 .welcomeMessage {
-  margin: 10px;
+  text-align: center;
+  font-family: 'Pacifico', cursive;
+  font-size: 3vw;
+  color: #384046;
+  margin: 4px;
+  margin-right: 9em;
+  margin-top: 3em;
 }
+
+body {
+  background-image: url('https://i.imgur.com/lh8Y8M9.jpg');
+}
+
+h4 {
+  font-size: 5vw;
+}
+

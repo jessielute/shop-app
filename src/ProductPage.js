@@ -20,10 +20,10 @@ class ProductPage extends React.Component {
       return (
         <Card className="productPage">
           <CardContent>
-            <Typography color="headline">
+            <Typography color="textSecondary">
               {this.productType}
             </Typography>
-            <Typography variant="headline" component="h2">
+            <Typography variant="textSecondary" component="h2">
               {this.product.name}
             </Typography>
           </CardContent>

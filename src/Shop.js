@@ -7,40 +7,27 @@ import Turquoise from './Turquoise';
 import Blush from './Blush';
 import Cart from './Cart'
 import { fetchProductsList } from './Products';
+import { ProductCategory } from './ProductCategory';
 
 class Shop extends React.Component {
     constructor(e) {
-      super(e);
+      super(...e);  
+
       this.state = {
-        cart: [],
-        productsList: []
+        productsLists: [],
+        match: e.match
       };
-    }
- 
-    createProduct({ name, price }) {
-        return { name, price };
-    }
-    
-    addProductToCart({ name, price }) {
-        if (!name || name === '' ) {
-            throw new Error('I can\'t do that dave');
-        }
 
-        this.setState(prevState => {
-          return ({
-            cart: [...prevState.cart, {name, price}],
-            productsList: prevState.productsList
-          })
-        }
-      );
+      this.getCart = e.getCart;
+      this.onAddedProduct = e.onAddedProduct;
     }
 
-    componentDidMount() {
-      fetchProductsList().then((productsList) => {
-        this.setState(prevState => {
-          return Object.assign(prevState, {productsList});
-        });
-      })
+    async componentDidMount() {
+      const productsLists = await fetchProductsList();
+
+      this.setState(prevState => {
+        return Object.assign(prevState, {productsLists});
+      });
     }
 
     // state = {
@@ -53,33 +40,44 @@ class Shop extends React.Component {
     // 4. Details show up on page! Woop. 
     
     renderProductRoutes(onAddedProduct) {
-      return this.state.productsList.map((product) => 
-        (<Route exact path={`${this.props.match.path}/${product.id}`} render={ (props) => (<Turquoise key={product.id} onAddedProduct={onAddedProduct} product={product} />) } />)
-      );
+      return this.state.productsLists.map((productList) => {
+        console.log(`${this.state.match.path}/${productList.url}`);
+        return (<Route key={`route-${productList.url}`} path={`${this.state.match.path}/${productList.url}`} render={ 
+          (props) => (<ProductCategory key={productList.url} onAddedProduct={onAddedProduct} productList={productList.products} productType={productList.name} {...props}/>) 
+        } />)
+      });
     }
 
     renderProductLinks() {
-      return this.state.productsList.map((product) =>
-        (<Link to={`${this.props.match.path}/${product.id}`}><button>{product.name}</button></Link>)
+      return this.state.productsLists.map((productList) =>
+        (<Link key={productList.url} to={`${this.state.match.path}/${productList.url}`}><button>{productList.name}</button></Link>)
       )
     }
 
     render() {
-        const boundCallback = this.addProductToCart.bind(this);
-
-        return (
-            <div>
-                <h1>Shop</h1>
-                <p>This is the shop page.</p>
-                <div>
-                    {this.renderProductLinks()}
-                </div>
-                <Switch>
-                    {this.renderProductRoutes(boundCallback)}
-                </Switch>
-                <Cart items={(this.state || {}).cart || []} />
+      return (
+        <div>
+        <h1>Welome to the Blush and Turquoise Shop</h1>
+        <h2>Established 1659</h2>
+        <div class= "transbox">
+          
+          <p>Peruse our boutique collection of blush and turquoise items. Languish in the beauty of blush and turqouise.
+            Stay a while. Why ony Blush and Turquoise? 
+            Because, they are the best colours. Anyone who says differently is incorrect and you can tell them tell
+             that we (clearly experts on this matter) have consulted scientific journals, primary sources (such as 
+             the IBECC (International Best Colours Ever Comittee) in order to prove our theory that hte only two colours that <i>truly </i> 
+               meet the standrards of IBECC are Blush, and Turquoise. 
+          </p>
+          <div>
             </div>
-        )
+            {this.renderProductLinks()}
+          </div>
+          <Switch>
+            {this.renderProductRoutes(this.onAddedProduct)}
+          </Switch>
+          <Cart items={this.getCart()} />
+        </div>
+      )
     }
 }
 

@@ -1,28 +1,62 @@
+.transbox {
+  background-color: rgb(90, 224, 211);
+  max-width: 50em;
+  margin: 3.35vw;
+  opacity: 0.7;
+  border: 5em black;
+}
+
+h3 {
+  text-align: center;
+ color: aqua;
+}
+
 .App {
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.flex {
+  flex: 1;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+button {
+  background-color: darkturquoise;
+  color: black;
+  display: inline-flex;
+ 
+  padding: 7px 35px;
+  background: transparent;
+  cursor: pointer;
+} 
+
+.MuiToolbar-root-36 {
+  background-color: lightcoral;
 }
 
-.App-title {
-  font-size: 1.5em;
+body {
+  background-image: url("https://i.imgur.com/FrlHpAn.jpg"); 
+  background-size: cover;
+
 }
 
-.App-intro {
-  font-size: large;
+h1 {
+color: turquoise;
+background-color: lightcoral;
+border: 0.6em solid white;
+max-width: 20em;
+text-align: center;
+margin: 1.5em;
+padding: 3px;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+p {
+  padding: 3vw;
+  margin: 4vw;
 }
+
+button {
+  background-color: white;
+  margin: 1.5em;
+}
+
+

@@ -1,0 +1,8 @@
+.homeContainer {
+  flex: 0 0 100%;
+  margin: 10px;
+}
+
+.welcomeMessage {
+  margin: 10px;
+}
